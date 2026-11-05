@@ -1,0 +1,40 @@
+
+<div ng-controller="contactCtrl">
+<h2>Contact Us</h2>
+<p>We would love to hear from you! Fill in the form below to get in touch with our team.</p>
+<form name="contactForm" ng-submit="sendMessage()" novalidate>
+<label>Full Name</label><br>
+<input type="text" ng-model="name" placeholder="Enter your name" required style="width:95%;padding:10px"><br><br>
+<label>Email Address</label><br>
+<input type="email" ng-model="email" placeholder="Enter your email" required style="width:95%;padding:10px"><br><br>
+<label>Select Course</label><br>
+<select ng-model="course" required style="width:99%;padding:10px">
+<option value="">Choose a course</option>
+<option>Java Programming</option>
+<option>Python Programming</option>
+<option>Web Development</option>
+<option>Data Science</option>
+</select><br><br>
+<label>Your Message</label><br>
+<textarea ng-model="message" placeholder="Write your message" rows="5" required style="width:95%;padding:10px"></textarea><br><br>
+<button type="submit" ng-disabled="contactForm.$invalid" style="background:#8054b8;color:white;padding:12px 25px;border:0;border-radius:6px">Send Message</button>
+</form>
+<p ng-show="success" style="color:green;font-weight:bold">{{success}}</p>
+<h3>Contact Information</h3>
+<p><b>Email:</b> studentlearning@example.com</p>
+<p><b>Website:</b> Student Learning Hub</p>
+<p><b>Working Hours:</b> Monday – Friday, 9 AM – 5 PM</p>
+</div>
+<script>
+app.controller("contactCtrl",function($scope){
+$scope.sendMessage=function(){
+$scope.success="Thank you! Your message has been submitted successfully.";
+$scope.name="";
+$scope.email="";
+$scope.course="";
+$scope.message="";
+$scope.contactForm.$setPristine();
+$scope.contactForm.$setUntouched();
+};
+});
+</script>
